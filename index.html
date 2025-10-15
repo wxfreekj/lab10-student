@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 10: Severe Weather – Tornado Development and Detection</title>
+    <link href="./shared/styles/common.css" rel="stylesheet" />
+    <link href="./shared/styles/lab-styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div
+      class="progress-indicator"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        padding: 8px 0;
+      "
+    >
+      <div
+        class="progress-bar"
+        style="width: 100%; height: 8px; background: #e0e0e0; overflow: hidden"
+      >
+        <div
+          class="progress-fill"
+          id="progressBar"
+          style="
+            height: 8px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+            display: block;
+          "
+        ></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="header">
+        <h1>🌪️ Lab 10: Severe Weather – Tornado Development and Detection</h1>
+        <p class="subtitle">ESCI 240 - 30 Points</p>
+      </div>
+
+      <div class="content">
+        <!-- Introduction Section -->
+        <div class="section">
+          <h2>📚 Introduction</h2>
+          <div class="intro-box">
+            <p>
+              Severe weather poses significant threats to lives and property
+              each year. Among these threats, tornadoes are particularly
+              dangerous due to their sudden development, powerful winds, and
+              potential for widespread destruction. Understanding how and why
+              tornadoes form can help us prepare and respond more effectively.
+            </p>
+
+            <p>
+              This lab will explore the meteorological ingredients required for
+              tornado formation through interpretation of various weather maps
+              and show you how meteorologists utilize Doppler radar to detect
+              and track tornadoes.
+            </p>
+
+            <p>
+              For this lab, you will analyze the
+              <strong>Hallam tornado event</strong>, one of the widest tornadoes
+              ever recorded at 2.5 miles wide. By examining weather conditions
+              before and during the storm, you'll learn how meteorologists
+              predict and monitor severe weather events.
+            </p>
+          </div>
+        </div>
+
+        <!-- Objectives -->
+        <div class="section">
+          <h2>🎯 Objectives</h2>
+          <ul>
+            <li>
+              Identify key meteorological conditions necessary for tornado
+              formation
+            </li>
+            <li>
+              Understand the significance of wind shear, moisture, and lift
+              mechanisms in severe weather development
+            </li>
+            <li>
+              Interpret weather maps and Doppler radar imagery related to
+              tornado events
+            </li>
+            <li>
+              Apply concepts from the course textbook on supercells to
+              real-world scenarios
+            </li>
+          </ul>
+        </div>
+
+        <!-- Key Ingredients -->
+        <div class="section">
+          <h2>🔑 Key Ingredients for Tornado Formation</h2>
+          <div class="info-box">
+            <ul>
+              <li>
+                <strong>Strong Winds at 500 hPa:</strong> Winds greater than 40
+                knots provide the necessary upper-level support for severe
+                thunderstorms
+              </li>
+              <li>
+                <strong>Wind Shear:</strong> Significant changes in wind speed
+                and direction with altitude can promote rotation in
+                thunderstorms
+              </li>
+              <li>
+                <strong>Moisture:</strong> Surface dewpoints greater than 65°F
+                supply the moisture needed for thunderstorms to develop and
+                intensify
+              </li>
+              <li>
+                <strong>Trigger Mechanisms:</strong> Features such as fronts or
+                areas where different air masses converge (the "triple point")
+                initiate storm formation
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Hallam Tornado Context -->
+        <div class="section">
+          <h2>🌪️ The Hallam, Nebraska Tornado - May 22, 2004</h2>
+          <div class="info-box">
+            <p>
+              <strong>Historic Event:</strong> At 2.5 miles wide, the Hallam
+              tornado was the widest tornado in recorded history. The storm
+              caused extensive damage across southeastern Nebraska.
+            </p>
+
+            <p>
+              <strong>Your Task:</strong> Carefully review the provided weather
+              maps and radar images from this event, along with your textbook,
+              to answer the following questions about tornado development and
+              detection.
+            </p>
+          </div>
+
+          <!-- Weather Analysis Images -->
+          <image-looper
+            title="Hallam Tornado Event - Weather Maps & Radar Images"
+            images="Lab 10 ESCI 240 - Severe WeatherV2_Page_01_Image_0001.png, Lab 10 ESCI 240 - Severe WeatherV2_Page_03_Image_0001.png, Lab 10 ESCI 240 - Severe WeatherV2_Page_04_Image_0001.png, Lab 10 ESCI 240 - Severe WeatherV2_Page_05_Image_0001.png, Lab 10 ESCI 240 - Severe WeatherV2_Page_06_Image_0001.png, Lab 10 ESCI 240 - Severe WeatherV2_Page_07_Image_0001.png, Lab 10 ESCI 240 - Severe WeatherV2_Page_08_Image_0001.png, Lab 10 ESCI 240 - Severe WeatherV2_Page_09_Image_0001.png, Lab 10 ESCI 240 - Severe WeatherV2_Page_10_Image_0001.png, Lab 10 ESCI 240 - Severe WeatherV2_Page_11_Image_0001.png, Lab 10 ESCI 240 - Severe WeatherV2_Page_12_Image_0001.png, Lab 10 ESCI 240 - Severe WeatherV2_Page_13_Image_0001.png, Lab 10 ESCI 240 - Severe WeatherV2_Page_14_Image_0001.png, Lab 10 ESCI 240 - Severe WeatherV2_Page_15_Image_0001.png, Lab 10 ESCI 240 - Severe WeatherV2_Page_16_Image_0001.png, Lab 10 ESCI 240 - Severe WeatherV2_Page_17_Image_0001.png, Lab 10 ESCI 240 - Severe WeatherV2_Page_18_Image_0001.png"
+          >
+          </image-looper>
+        </div>
+
+        <!-- Question 1 -->
+        <div class="section">
+          <h3>Question 1: Concordia, Kansas Conditions (4 pts)</h3>
+          <p>
+            Look back at the surface chart and identify the meteorological
+            conditions in Concordia, Kansas:
+          </p>
+
+          <div class="form-group">
+            <label for="q1-temp">Temperature (°F):</label>
+            <input
+              type="number"
+              id="q1-temp"
+              name="q1-temp"
+              placeholder="Enter temperature"
+              step="1"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="q1-dewpt">Dewpoint (°F):</label>
+            <input
+              type="number"
+              id="q1-dewpt"
+              name="q1-dewpt"
+              placeholder="Enter dewpoint"
+              step="1"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="q1-windspd">Wind Speed (knots):</label>
+            <input
+              type="number"
+              id="q1-windspd"
+              name="q1-windspd"
+              placeholder="Enter wind speed"
+              step="1"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="q1-winddir">Wind Direction:</label>
+            <select id="q1-winddir" name="q1-winddir">
+              <option value="">Select direction...</option>
+              <option value="N">N (North)</option>
+              <option value="S">S (South)</option>
+              <option value="E">E (East)</option>
+              <option value="W">W (West)</option>
+              <option value="NE">NE (Northeast)</option>
+              <option value="NW">NW (Northwest)</option>
+              <option value="SE">SE (Southeast)</option>
+              <option value="SW">SW (Southwest)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="section">
+          <h3>Question 2: Rapid Storm Development (10 pts)</h3>
+          <p>
+            Using your textbook, explain why the storm that produced the Hallam
+            tornado developed so rapidly. Consider supercell dynamics and
+            atmospheric conditions present at the time.
+          </p>
+
+          <div class="form-group">
+            <label for="q2-explain">Explanation:</label>
+            <textarea
+              id="q2-explain"
+              name="q2-explain"
+              rows="8"
+              placeholder="Discuss the meteorological ingredients that contributed to rapid storm development, including wind shear, moisture, instability, and trigger mechanisms. Reference supercell dynamics from your textbook..."
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="section">
+          <h3>Question 3: Doppler Radar Detection (8 pts)</h3>
+          <p>
+            Describe how Doppler radar allows meteorologists to detect
+            tornadoes. What specifically indicates rotation and potential
+            tornadic activity on radar images?
+          </p>
+
+          <div class="form-group">
+            <label for="q3-doppler">Doppler Radar Explanation:</label>
+            <textarea
+              id="q3-doppler"
+              name="q3-doppler"
+              rows="7"
+              placeholder="Explain how Doppler radar detects tornadoes, including the velocity couplet signature, what colors indicate, and how rotation is identified..."
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="section">
+          <h3>Question 4: Storm Dissipation in Kansas (8 pts)</h3>
+          <p>
+            Examine the satellite imagery carefully. Several storms in central
+            Kansas attempted to develop but dissipated quickly. Provide an
+            explanation for why these storms never intensified into severe
+            storms.
+          </p>
+
+          <div class="info-box">
+            <p>
+              <strong>Hint:</strong> Multiple correct answers are possible.
+              Consider atmospheric conditions, wind shear, moisture
+              availability, cap strength, and other factors that may have
+              prevented storm development. Justify your reasoning clearly.
+            </p>
+          </div>
+
+          <div class="form-group">
+            <label for="q4-dissipation">Explanation:</label>
+            <textarea
+              id="q4-dissipation"
+              name="q4-dissipation"
+              rows="7"
+              placeholder="Explain why storms in central Kansas failed to develop into severe storms. Consider factors such as lack of moisture, insufficient wind shear, capping inversions, dry air intrusion, or unfavorable atmospheric conditions..."
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Export Section -->
+        <div class="section">
+          <h2>💾 Export Your Work</h2>
+          <p>
+            Click the button below to generate a text file with all your
+            answers. Submit this file to Canvas.
+          </p>
+          <button id="exportBtn" class="export-button">
+            Export Lab Answers
+          </button>
+          <div id="exportStatus" class="export-status"></div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>
+          ESCI 240 - Lab 10: Severe Weather – Tornado Development and Detection
+        </p>
+      </div>
+    </div>
+
+    <script src="./shared/utils/form-exporter.js"></script>
+    <script src="./shared/components/image-looper.js"></script>
+    <script src="lab10-main.js"></script>
+  </body>
+</html>

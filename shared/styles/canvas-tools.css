@@ -1,0 +1,237 @@
+/**
+ * Canvas Drawing Tools Styles
+ * For single-line and multi-line canvas components and station model builder
+ */
+
+/* === CANVAS DRAWING WRAPPER === */
+.curve-widget-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+    padding: 24px 32px 32px;
+    max-width: 900px;
+}
+
+.curve-widget-wrapper h2 {
+    color: #1e3c72;
+    margin-bottom: 20px;
+}
+
+/* === STAGE (Image + Canvas Container) === */
+.stage {
+    position: relative;
+    display: inline-block;
+    line-height: 0;
+}
+
+.stage img,
+.stage canvas {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+}
+
+.stage canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+}
+
+/* === HINTS AND INSTRUCTIONS === */
+.hint {
+    color: #666;
+    font-size: 14px;
+    margin: 15px 0;
+    text-align: center;
+    font-style: italic;
+}
+
+/* === DRAWING CONTROLS === */
+.controls label {
+    font-weight: bold;
+    color: #333;
+}
+
+.controls select {
+    font-size: 16px;
+    padding: 8px 12px;
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.controls select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* === CANVAS BUTTONS === */
+.btn {
+    background: #757575;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background: #616161;
+}
+
+.btn-save {
+    background: #d32f2f;
+    color: #fff;
+}
+
+.btn-save:hover {
+    background: #b71c1c;
+}
+
+/* === STATION MODEL BUILDER SPECIFIC STYLES === */
+
+/* Label Bank */
+.label-bank {
+    background: #fff3e0;
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px dashed #ff9800;
+    min-height: 150px;
+    margin-bottom: 20px;
+}
+
+.label-bank h3 {
+    margin-top: 0;
+    color: #e65100;
+    text-align: center;
+}
+
+.labels-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+/* Draggable Labels */
+.draggable-label {
+    padding: 8px 15px;
+    background: #fff;
+    color: black;
+    border: 2px solid #ff9800;
+    border-radius: 20px;
+    cursor: move;
+    user-select: none;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 16px;
+}
+
+.draggable-label[data-type='sky'] {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.draggable-label[data-type='wind-barb'],
+.draggable-label[data-type='weather'] {
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.draggable-label:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.draggable-label.dragging {
+    opacity: 0.5;
+}
+
+/* Workspace */
+.workspace {
+    background: #f9f9f9;
+    border: 3px solid #333;
+    border-radius: 10px;
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+/* Dropped Labels in Workspace */
+.dropped-label {
+    position: absolute;
+    padding: 4px 8px;
+    background: transparent !important;
+    color: black;
+    border-radius: 4px;
+    cursor: move;
+    user-select: none;
+    font-weight: bold;
+    font-size: 16px;
+    z-index: 10;
+}
+
+.dropped-label[data-type='sky'] {
+    width: 150px !important;
+    height: 150px !important;
+}
+
+.dropped-label[data-type='sky'] svg {
+    width: 150px !important;
+    height: 150px !important;
+}
+
+/* Rotation Handle for Wind Barb */
+.rotate-handle {
+    width: 16px;
+    height: 16px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid white;
+    border-radius: 50%;
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    cursor: pointer;
+    z-index: 11;
+}
+
+.rotate-handle:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+    .curve-widget-wrapper {
+        padding: 15px;
+    }
+
+    .controls {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .controls label,
+    .controls select,
+    .controls button {
+        width: 100%;
+    }
+
+    .workspace {
+        min-height: 400px;
+    }
+}
