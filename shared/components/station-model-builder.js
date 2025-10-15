@@ -4,7 +4,7 @@
  */
 
 export function initializeStationModelBuilder(config) {
-    const { containerId, weatherData } = config;
+    const { containerId, weatherData, saveFilename = 'station_model.png' } = config;
     const container = document.getElementById(containerId);
     
     if (!container) {
@@ -51,7 +51,7 @@ export function initializeStationModelBuilder(config) {
             </div>
         </div>
 
-        <div class="workspace" id="workspace"></div>
+        <div class="workspace" id="workspace" data-save-filename="${saveFilename}"></div>
 
         <div class="controls">
             <button class="btn-success" onclick="window.stationModelSave()">💾 Save Image</button>
@@ -231,12 +231,13 @@ function startDragDroppedLabel(e) {
  */
 window.stationModelSave = function() {
     const workspace = document.getElementById('workspace');
+    const filename = workspace.dataset.saveFilename || 'station_model.png';
     
     // Use html2canvas to capture the workspace
     if (typeof html2canvas !== 'undefined') {
         html2canvas(workspace, { backgroundColor: null }).then(canvas => {
             const link = document.createElement('a');
-            link.download = 'station_model.png';
+            link.download = filename;
             link.href = canvas.toDataURL('image/png');
             link.click();
         });
