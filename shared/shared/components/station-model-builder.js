@@ -29,11 +29,11 @@ export function initializeStationModelBuilder(config) {
 
                 <!-- Wind Barb -->
                 <div class="draggable-label" draggable="true" data-type="wind-barb">
-                    <svg width="48" height="48" viewBox="0 0 48 48" style="pointer-events: none; transform: rotate(45deg);">
+                    <svg width="48" height="48" viewBox="0 0 48 48" style="pointer-events: none;">
                         <g>
-                            <line x1="24" y1="44" x2="24" y2="4" stroke="#000" stroke-width="2"></line>
-                            <line x1="24" y1="8" x2="40" y2="16" stroke="#000" stroke-width="2"></line>
-                            <line x1="24" y1="18" x2="32" y2="22" stroke="#000" stroke-width="2"></line>
+                            <line x1="24" y1="64" x2="24" y2="8" stroke="#000" stroke-width="2"></line>
+                            <line x1="24" y1="8" x2="40" y2="4" stroke="#000" stroke-width="2"></line>
+                            <line x1="24" y1="18" x2="32" y2="15" stroke="#000" stroke-width="2"></line>
                         </g>
                     </svg>
                 </div>
@@ -120,9 +120,16 @@ function initializeDragAndDrop() {
 
     if (draggedElement.dataset.type === "wind-barb") {
       droppedLabel.innerHTML = draggedElement.innerHTML;
-      droppedLabel.style.width = "48px";
-      droppedLabel.style.height = "48px";
+      droppedLabel.style.width = "80px";
+      droppedLabel.style.height = "80px";
       droppedLabel.setAttribute("data-type", "wind-barb");
+
+      // Scale up the SVG to match the container
+      const svg = droppedLabel.querySelector("svg");
+      if (svg) {
+        svg.setAttribute("width", "80");
+        svg.setAttribute("height", "80");
+      }
 
       // Add rotation handle
       const rotateHandle = document.createElement("div");
