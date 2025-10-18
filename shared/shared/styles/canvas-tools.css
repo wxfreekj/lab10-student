@@ -208,10 +208,24 @@
   top: -8px;
   cursor: pointer;
   z-index: 11;
+  touch-action: none;
 }
 
 .rotate-handle:hover {
   background: rgba(0, 0, 0, 0.5);
+}
+
+/* Touch-action for interactive elements */
+.draggable-label {
+  touch-action: none;
+}
+
+.dropped-label {
+  touch-action: none;
+}
+
+.workspace {
+  touch-action: pan-y pinch-zoom;
 }
 
 /* === RESPONSIVE DESIGN === */
@@ -235,6 +249,22 @@
 
   .workspace {
     min-height: 400px;
+  }
+
+  /* Make draggable labels bigger and more touch-friendly */
+  .draggable-label {
+    padding: 12px 20px;
+    font-size: 18px;
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .label-bank {
+    padding: 12px;
+    min-height: 120px;
   }
 
   /* Improve touch targets for mobile */
