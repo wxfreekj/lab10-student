@@ -189,17 +189,23 @@ function initializeDragAndDrop() {
   }
 
   function createDroppedLabel(x, y, sourceElement) {
+    const templateElement = sourceElement || draggedElement;
+    if (!templateElement) return false;
+
     // Create dropped label
     const droppedLabel = document.createElement("div");
     droppedLabel.className = "dropped-label";
     droppedLabel.style.left = x - 30 + "px";
     droppedLabel.style.top = y - 15 + "px";
 
-    if (sourceElement.dataset.type === "wind-barb") {
-      droppedLabel.innerHTML = draggedElement.innerHTML;
+    if (templateElement.dataset.type === "wind-barb") {
+      droppedLabel.innerHTML = templateElement.innerHTML;
       droppedLabel.style.width = "80px";
       droppedLabel.style.height = "80px";
       droppedLabel.setAttribute("data-type", "wind-barb");
+      droppedLabel.setAttribute("data-rotation", "0");
+      droppedLabel.style.transform = "rotate(0deg)";
+      droppedLabel.style.transformOrigin = "center center";
 
       // Scale up the SVG to match the container
       const svg = droppedLabel.querySelector("svg");
@@ -215,13 +221,13 @@ function initializeDragAndDrop() {
       droppedLabel.appendChild(rotateHandle);
 
       enableRotation(droppedLabel, rotateHandle);
-    } else if (sourceElement.dataset.type === "weather") {
-      droppedLabel.innerHTML = sourceElement.innerHTML;
+    } else if (templateElement.dataset.type === "weather") {
+      droppedLabel.innerHTML = templateElement.innerHTML;
       droppedLabel.style.width = "32px";
       droppedLabel.style.height = "32px";
       droppedLabel.setAttribute("data-type", "weather");
-    } else if (sourceElement.dataset.type === "sky") {
-      droppedLabel.innerHTML = sourceElement.innerHTML;
+    } else if (templateElement.dataset.type === "sky") {
+      droppedLabel.innerHTML = templateElement.innerHTML;
       droppedLabel.setAttribute("data-type", "sky");
       droppedLabel.style.width = "150px";
       droppedLabel.style.height = "150px";
@@ -231,7 +237,7 @@ function initializeDragAndDrop() {
         svg.setAttribute("height", "150");
       }
     } else {
-      droppedLabel.textContent = sourceElement.textContent;
+      droppedLabel.textContent = templateElement.textContent;
       droppedLabel.style.color = "black";
       droppedLabel.style.fontSize = "16px";
       droppedLabel.style.fontWeight = "bold";
@@ -245,7 +251,7 @@ function initializeDragAndDrop() {
     workspace.appendChild(droppedLabel);
 
     // Remove from label bank
-    sourceElement.remove();
+    templateElement.remove();
 
     return false;
   }
@@ -256,11 +262,14 @@ function initializeDragAndDrop() {
  */
 function enableRotation(label, handle) {
   let isRotating = false;
+  let currentRotation = parseFloat(label.dataset.rotation || "0");
 
   function startRotation(e) {
     e.stopPropagation();
     e.preventDefault();
     isRotating = true;
+    handle.style.cursor = "grabbing";
+    currentRotation = parseFloat(label.dataset.rotation || "0");
 
     const rect = label.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
@@ -276,11 +285,14 @@ function enableRotation(label, handle) {
       const dx = clientX - centerX;
       const dy = clientY - centerY;
       const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
-      label.style.transform = `rotate(${angle + 90}deg)`;
+      currentRotation = angle + 90;
+      label.dataset.rotation = currentRotation.toString();
+      label.style.transform = `rotate(${currentRotation}deg)`;
     }
 
     function stopRotate() {
       isRotating = false;
+      handle.style.cursor = "grab";
       document.removeEventListener("mousemove", rotateMove);
       document.removeEventListener("mouseup", stopRotate);
       document.removeEventListener("touchmove", rotateMove);

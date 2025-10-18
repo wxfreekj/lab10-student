@@ -196,19 +196,26 @@
   height: 150px !important;
 }
 
+.dropped-label[data-type="wind-barb"] {
+  transform-origin: center center;
+}
+
 /* Rotation Handle for Wind Barb */
 .rotate-handle {
-  width: 16px;
-  height: 16px;
-  background: rgba(0, 0, 0, 0.3);
+  width: 22px;
+  height: 22px;
+  background: rgba(0, 0, 0, 0.35);
   border: 2px solid white;
   border-radius: 50%;
   position: absolute;
-  right: -8px;
-  top: -8px;
-  cursor: pointer;
+  right: -11px;
+  top: -11px;
+  cursor: grab;
   z-index: 11;
   touch-action: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .rotate-handle:hover {

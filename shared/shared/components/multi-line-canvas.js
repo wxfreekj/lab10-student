@@ -47,8 +47,17 @@ export function initializeMultiLineCanvas(config) {
     if (w === 0 || h === 0) return;
 
     const stage = img.parentElement;
-    stage.style.width = w + "px";
-    stage.style.height = h + "px";
+    if (stage) {
+      stage.style.maxWidth = w + "px";
+      stage.style.width = "100%";
+      stage.style.height = "auto";
+    }
+
+    img.style.width = "100%";
+    img.style.height = "auto";
+
+    canvas.style.width = "100%";
+    canvas.style.height = "100%";
 
     canvas.width = w;
     canvas.height = h;
@@ -163,9 +172,11 @@ export function initializeMultiLineCanvas(config) {
    */
   function getMousePos(e) {
     const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
     return {
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
+      x: (e.clientX - rect.left) * scaleX,
+      y: (e.clientY - rect.top) * scaleY,
     };
   }
 
@@ -176,8 +187,8 @@ export function initializeMultiLineCanvas(config) {
     const rect = canvas.getBoundingClientRect();
     const touch = e.touches[0] || e.changedTouches[0];
     return {
-      x: touch.clientX - rect.left,
-      y: touch.clientY - rect.top,
+      x: (touch.clientX - rect.left) * (canvas.width / rect.width),
+      y: (touch.clientY - rect.top) * (canvas.height / rect.height),
     };
   }
 
