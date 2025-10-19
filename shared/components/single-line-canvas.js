@@ -32,6 +32,7 @@ export function initializeSingleLineCanvas(config) {
 
   let points = [];
   let draggingIdx = null;
+  let isPinchZoom = false;
 
   /**
    * Resize canvas to match image dimensions
@@ -168,23 +169,47 @@ export function initializeSingleLineCanvas(config) {
 
   // Touch Event Listeners
   canvas.addEventListener("touchstart", (e) => {
+    if (e.touches && e.touches.length > 1) {
+      isPinchZoom = true;
+      return;
+    }
+
+    isPinchZoom = false;
     e.preventDefault(); // Prevent scrolling
     const pos = getTouchPos(e);
     handlePointerDown(pos);
   });
 
   canvas.addEventListener("touchmove", (e) => {
+    if (e.touches && e.touches.length > 1) {
+      isPinchZoom = true;
+      return;
+    }
+    if (isPinchZoom) return;
+
     e.preventDefault(); // Prevent scrolling
     const pos = getTouchPos(e);
     handlePointerMove(pos);
   });
 
   canvas.addEventListener("touchend", (e) => {
+    if (isPinchZoom) {
+      if (!e.touches || e.touches.length === 0) {
+        isPinchZoom = false;
+      }
+      return;
+    }
+
     e.preventDefault();
     handlePointerUp();
   });
 
   canvas.addEventListener("touchcancel", (e) => {
+    if (isPinchZoom) {
+      isPinchZoom = false;
+      return;
+    }
+
     e.preventDefault();
     handlePointerUp();
   });

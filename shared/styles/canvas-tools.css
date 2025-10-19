@@ -26,6 +26,7 @@
   position: relative;
   display: inline-block;
   line-height: 0;
+  touch-action: pinch-zoom;
 }
 
 .stage img,
@@ -34,6 +35,10 @@
   height: auto;
   display: block;
   border-radius: 6px;
+}
+
+.stage canvas {
+  touch-action: pinch-zoom;
 }
 
 .stage canvas {
@@ -286,11 +291,11 @@
   /* Make stage more touch-friendly */
   .stage {
     width: 100%;
-    touch-action: none;
+    touch-action: pinch-zoom;
   }
 
   .stage canvas {
-    touch-action: none;
+    touch-action: pinch-zoom;
     cursor: pointer;
   }
 }
