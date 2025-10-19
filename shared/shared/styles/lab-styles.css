@@ -1,3 +1,67 @@
+.q1-inline-answers .form-group {
+  flex: 1 1 220px;
+  min-width: 200px;
+  max-width: 300px;
+  margin-bottom: 0;
+}
+.q1-inline-answers select {
+  width: auto !important;
+  min-width: 120px;
+  max-width: 100%;
+  display: inline-block;
+}
+.q1-inline-answers label {
+  white-space: nowrap;
+  display: block;
+  margin-bottom: 4px;
+}
+@media (max-width: 900px) {
+  .q1-inline-answers {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .q1-inline-answers .form-group {
+    flex: 1 1 100%;
+    min-width: 180px;
+    max-width: 100%;
+    margin-bottom: 8px;
+  }
+}
+/* === Q1 INLINE ANSWERS === */
+.q1-inline-answers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px 32px;
+  max-width: 700px;
+  margin: 0 auto 10px auto;
+}
+.q1-inline-answers .form-group {
+  margin-bottom: 0;
+}
+.q1-inline-answers select {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Ensure native dropdown arrow appears and the menu can open above other content */
+.q1-inline-answers select {
+  -webkit-appearance: menulist-button !important;
+  -moz-appearance: menulist-button !important;
+  appearance: menulist-button !important;
+  background-color: #fff !important;
+  color: #222 !important;
+  position: relative !important;
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+}
+@media (max-width: 700px) {
+  .q1-inline-answers {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
 /**
  * Lab Styles - Common styling for all ESCI 240 labs
  * Question boxes, tables, forms, buttons, etc.
