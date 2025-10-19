@@ -168,51 +168,71 @@ export function initializeSingleLineCanvas(config) {
   });
 
   // Touch Event Listeners
-  canvas.addEventListener("touchstart", (e) => {
-    if (e.touches && e.touches.length > 1) {
-      isPinchZoom = true;
-      return;
-    }
-
-    isPinchZoom = false;
-    e.preventDefault(); // Prevent scrolling
-    const pos = getTouchPos(e);
-    handlePointerDown(pos);
-  });
-
-  canvas.addEventListener("touchmove", (e) => {
-    if (e.touches && e.touches.length > 1) {
-      isPinchZoom = true;
-      return;
-    }
-    if (isPinchZoom) return;
-
-    e.preventDefault(); // Prevent scrolling
-    const pos = getTouchPos(e);
-    handlePointerMove(pos);
-  });
-
-  canvas.addEventListener("touchend", (e) => {
-    if (isPinchZoom) {
-      if (!e.touches || e.touches.length === 0) {
-        isPinchZoom = false;
+  canvas.addEventListener(
+    "touchstart",
+    (e) => {
+      if (e.touches && e.touches.length > 1) {
+        isPinchZoom = true;
+        // Don't preventDefault - allow native pinch zoom
+        return;
       }
-      return;
-    }
 
-    e.preventDefault();
-    handlePointerUp();
-  });
-
-  canvas.addEventListener("touchcancel", (e) => {
-    if (isPinchZoom) {
       isPinchZoom = false;
-      return;
-    }
+      e.preventDefault(); // Prevent scrolling for single-touch drawing
+      const pos = getTouchPos(e);
+      handlePointerDown(pos);
+    },
+    { passive: false }
+  );
 
-    e.preventDefault();
-    handlePointerUp();
-  });
+  canvas.addEventListener(
+    "touchmove",
+    (e) => {
+      if (e.touches && e.touches.length > 1) {
+        isPinchZoom = true;
+        // Don't preventDefault - allow native pinch zoom
+        return;
+      }
+      if (isPinchZoom) return;
+
+      e.preventDefault(); // Prevent scrolling for single-touch drawing
+      const pos = getTouchPos(e);
+      handlePointerMove(pos);
+    },
+    { passive: false }
+  );
+
+  canvas.addEventListener(
+    "touchend",
+    (e) => {
+      if (isPinchZoom) {
+        if (!e.touches || e.touches.length === 0) {
+          isPinchZoom = false;
+        }
+        // Don't preventDefault - allow native behavior
+        return;
+      }
+
+      e.preventDefault();
+      handlePointerUp();
+    },
+    { passive: false }
+  );
+
+  canvas.addEventListener(
+    "touchcancel",
+    (e) => {
+      if (isPinchZoom) {
+        isPinchZoom = false;
+        // Don't preventDefault - allow native behavior
+        return;
+      }
+
+      e.preventDefault();
+      handlePointerUp();
+    },
+    { passive: false }
+  );
 
   canvas.addEventListener("contextmenu", (e) => {
     e.preventDefault();
