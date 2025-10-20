@@ -405,12 +405,13 @@ function downloadTextFile(content, filename) {
 
 // Collapsible initialization for Lab 10
 function initializeCollapsibles() {
-  const headers = document.querySelectorAll('.collapsible-header');
-  headers.forEach(header => {
-    header.addEventListener('click', () => {
+  const headers = document.querySelectorAll(".collapsible-header");
+  headers.forEach((header) => {
+    header.addEventListener("click", () => {
       const content = header.nextElementSibling;
-      if (content && content.classList.contains('collapsible-content')) {
-        content.style.display = content.style.display === 'none' ? 'block' : 'none';
+      if (content && content.classList.contains("collapsible-content")) {
+        content.style.display =
+          content.style.display === "none" ? "block" : "none";
       }
     });
   });
