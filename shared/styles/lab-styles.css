@@ -110,7 +110,77 @@ body {
   margin-left: 30px;
   line-height: 2;
 }
+/* === COLLAPSIBLE SECTIONS (copied/adapted for Lab 8) === */
+.collapsible-container {
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0 0 16px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  background: #f8fbff;
+  border: 1px solid #dfe7ff;
+  transition: margin 0.2s ease;
+}
 
+.collapsible-header {
+  margin: 0;
+  padding: 12px 48px 12px 20px;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  font-weight: 800;
+  color: #1f3b82;
+  background: transparent;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+  font-size: 1.05em;
+}
+
+.collapsible-header.is-collapsed {
+  padding: 8px 48px 8px 20px;
+  min-height: auto;
+  font-size: 0.95em;
+  font-weight: 700;
+}
+
+.collapsible-header::after {
+  content: "▼";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.95em;
+  color: #6a6a6a;
+  transition: transform 0.2s ease, font-size 0.2s ease;
+}
+
+.collapsible-header.is-collapsed::after {
+  transform: translateY(-50%) rotate(-90deg);
+  font-size: 0.85em;
+}
+
+.collapsible-content {
+  display: block;
+  background: transparent;
+  padding: 18px 20px 20px 20px;
+  border-top: 1px solid #e5ecff;
+}
+
+.collapsible-content.is-collapsed {
+  display: none;
+}
+
+/* Stripe colours used for question chrome */
+.stripe-blue {
+  border-left: 4px solid #4285f4;
+}
+.stripe-indigo {
+  border-left: 4px solid #667eea;
+}
+.stripe-purple {
+  border-left: 4px solid #764ba2;
+}
 /* === QUESTIONS === */
 .question {
   background: white;

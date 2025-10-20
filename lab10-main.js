@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize input validation
   initializeValidation();
+
+  // Initialize collapsibles
+  initializeCollapsibles();
 });
 
 function initializeValidation() {
@@ -398,4 +401,17 @@ function downloadTextFile(content, filename) {
   a.click();
   document.body.removeChild(a);
   window.URL.revokeObjectURL(url);
+}
+
+// Collapsible initialization for Lab 10
+function initializeCollapsibles() {
+  const headers = document.querySelectorAll('.collapsible-header');
+  headers.forEach(header => {
+    header.addEventListener('click', () => {
+      const content = header.nextElementSibling;
+      if (content && content.classList.contains('collapsible-content')) {
+        content.style.display = content.style.display === 'none' ? 'block' : 'none';
+      }
+    });
+  });
 }

@@ -150,25 +150,27 @@
 
         <!-- Objectives -->
         <div class="section">
-          <h2>🎯 Objectives</h2>
-          <ul>
-            <li>
-              Identify key meteorological conditions necessary for tornado
-              formation
-            </li>
-            <li>
-              Understand the significance of wind shear, moisture, and lift
-              mechanisms in severe weather development
-            </li>
-            <li>
-              Interpret weather maps and Doppler radar imagery related to
-              tornado events
-            </li>
-            <li>
-              Apply concepts from the course textbook on supercells to
-              real-world scenarios
-            </li>
-          </ul>
+          <div class="intro-box">
+            <h2>🎯 Objectives</h2>
+            <ul>
+              <li>
+                Identify key meteorological conditions necessary for tornado
+                formation
+              </li>
+              <li>
+                Understand the significance of wind shear, moisture, and lift
+                mechanisms in severe weather development
+              </li>
+              <li>
+                Interpret weather maps and Doppler radar imagery related to
+                tornado events
+              </li>
+              <li>
+                Apply concepts from the course textbook on supercells to
+                real-world scenarios
+              </li>
+            </ul>
+          </div>
         </div>
 
         <!-- Key Ingredients -->
@@ -227,129 +229,131 @@
         </div>
 
         <!-- Question 1 -->
-        <div class="section">
-          <h3>Question 1: Concordia, Kansas Conditions (4 pts)</h3>
-          <p>
-            Look back at the surface chart and identify the meteorological
-            conditions in Concordia, Kansas:
-          </p>
-
-          <div class="form-group">
-            <label for="q1-temp">Temperature (°F):</label>
-            <input
-              type="number"
-              id="q1-temp"
-              name="q1-temp"
-              placeholder="Enter temperature"
-              step="1"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="q1-dewpt">Dewpoint (°F):</label>
-            <input
-              type="number"
-              id="q1-dewpt"
-              name="q1-dewpt"
-              placeholder="Enter dewpoint"
-              step="1"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="q1-windspd">Wind Speed (knots):</label>
-            <input
-              type="number"
-              id="q1-windspd"
-              name="q1-windspd"
-              placeholder="Enter wind speed"
-              step="1"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="q1-winddir">Wind Direction:</label>
-            <select id="q1-winddir" name="q1-winddir">
-              <option value="">Select direction...</option>
-              <option value="N">N (North)</option>
-              <option value="S">S (South)</option>
-              <option value="E">E (East)</option>
-              <option value="W">W (West)</option>
-              <option value="NE">NE (Northeast)</option>
-              <option value="NW">NW (Northwest)</option>
-              <option value="SE">SE (Southeast)</option>
-              <option value="SW">SW (Southwest)</option>
-            </select>
+        <div class="collapsible-container stripe-indigo">
+          <h3 class="collapsible-header">
+            Question 1: Concordia, Kansas Conditions (4 pts)
+          </h3>
+          <div class="collapsible-content">
+            <p>
+              Look back at the surface chart and identify the meteorological
+              conditions in Concordia, Kansas:
+            </p>
+            <div class="form-group">
+              <label for="q1-temp">Temperature (°F):</label>
+              <input
+                type="number"
+                id="q1-temp"
+                name="q1-temp"
+                placeholder="Enter temperature"
+                step="1"
+              />
+            </div>
+            <div class="form-group">
+              <label for="q1-dewpt">Dewpoint (°F):</label>
+              <input
+                type="number"
+                id="q1-dewpt"
+                name="q1-dewpt"
+                placeholder="Enter dewpoint"
+                step="1"
+              />
+            </div>
+            <div class="form-group">
+              <label for="q1-windspd">Wind Speed (knots):</label>
+              <input
+                type="number"
+                id="q1-windspd"
+                name="q1-windspd"
+                placeholder="Enter wind speed"
+                step="1"
+              />
+            </div>
+            <div class="form-group">
+              <label for="q1-winddir">Wind Direction:</label>
+              <select id="q1-winddir" name="q1-winddir">
+                <option value="">Select direction...</option>
+                <option value="N">N (North)</option>
+                <option value="S">S (South)</option>
+                <option value="E">E (East)</option>
+                <option value="W">W (West)</option>
+                <option value="NE">NE (Northeast)</option>
+                <option value="NW">NW (Northwest)</option>
+                <option value="SE">SE (Southeast)</option>
+                <option value="SW">SW (Southwest)</option>
+              </select>
+            </div>
           </div>
         </div>
 
         <!-- Question 2 -->
-        <div class="section">
-          <h3>Question 2: Rapid Storm Development (10 pts)</h3>
-          <p>
-            Using your textbook, explain why the storm that produced the Hallam
-            tornado developed so rapidly. Consider supercell dynamics and
-            atmospheric conditions present at the time.
-          </p>
-
-          <div class="form-group">
-            <label for="q2-explain">Explanation:</label>
-            <textarea
-              id="q2-explain"
-              name="q2-explain"
-              rows="8"
-              placeholder="Discuss the meteorological ingredients that contributed to rapid storm development, including wind shear, moisture, instability, and trigger mechanisms. Reference supercell dynamics from your textbook..."
-            ></textarea>
+        
+        <div class="collapsible-container stripe-indigo">
+          <h3 class="collapsible-header">
+            Question 2: Rapid Storm Development (10 pts)
+          </h3>
+          <div class="collapsible-content">
+            <p>
+              Using your textbook, explain why the storm that produced the
+              Hallam tornado developed so rapidly. Consider supercell dynamics
+              and atmospheric conditions present at the time.
+            </p>
+            <div class="form-group">
+              <textarea
+                id="q2-explain"
+                name="q2-explain"
+                rows="8"
+                placeholder="Discuss the meteorological ingredients that contributed to rapid storm development--reference your textbook..."
+              ></textarea>
+            </div>
           </div>
         </div>
 
         <!-- Question 3 -->
-        <div class="section">
-          <h3>Question 3: Doppler Radar Detection (8 pts)</h3>
-          <p>
-            Describe how Doppler radar allows meteorologists to detect
-            tornadoes. What specifically indicates rotation and potential
-            tornadic activity on radar images?
-          </p>
-
-          <div class="form-group">
-            <label for="q3-doppler">Doppler Radar Explanation:</label>
-            <textarea
-              id="q3-doppler"
-              name="q3-doppler"
-              rows="7"
-              placeholder="Explain how Doppler radar detects tornadoes, including the velocity couplet signature, what colors indicate, and how rotation is identified..."
-            ></textarea>
+        <div class="collapsible-container stripe-indigo">
+          <h3 class="collapsible-header">
+            Question 3: Doppler Radar Detection (8 pts)
+          </h3>
+          <div class="collapsible-content">
+            <p>
+              Describe how Doppler radar allows meteorologists to detect
+              tornadoes. What specifically indicates rotation and potential
+              tornadic activity on radar images?
+            </p>
+            <div class="form-group">
+              <textarea id="q3-doppler" name="q3-doppler" rows="7"
+              placeholder="Explain how Doppler radar detects tornadoes:"
+            ></textarea>  
           </div>
         </div>
 
         <!-- Question 4 -->
-        <div class="section">
-          <h3>Question 4: Storm Dissipation in Kansas (8 pts)</h3>
-          <p>
-            Examine the satellite imagery carefully. Several storms in central
-            Kansas attempted to develop but dissipated quickly. Provide an
-            explanation for why these storms never intensified into severe
-            storms.
-          </p>
-
-          <div class="info-box">
+        <div class="collapsible-container stripe-indigo">
+          <h3 class="collapsible-header">
+            Question 4: Storm Dissipation in Kansas (8 pts)
+          </h3>
+          <div class="collapsible-content">
             <p>
-              <strong>Hint:</strong> Multiple correct answers are possible.
-              Consider atmospheric conditions, wind shear, moisture
-              availability, cap strength, and other factors that may have
-              prevented storm development. Justify your reasoning clearly.
+              Examine the satellite imagery carefully. Several storms in central
+              Kansas attempted to develop but dissipated quickly. Provide an
+              explanation for why these storms never intensified into severe
+              storms.
             </p>
-          </div>
-
-          <div class="form-group">
-            <label for="q4-dissipation">Explanation:</label>
-            <textarea
-              id="q4-dissipation"
-              name="q4-dissipation"
-              rows="7"
-              placeholder="Explain why storms in central Kansas failed to develop into severe storms. Consider factors such as lack of moisture, insufficient wind shear, capping inversions, dry air intrusion, or unfavorable atmospheric conditions..."
-            ></textarea>
+            <div class="info-box">
+              <p>
+                <strong>Hint:</strong> Multiple correct answers are possible.
+                Consider atmospheric conditions, wind shear, moisture
+                availability, cap strength, and other factors that may have
+                prevented storm development. Justify your reasoning clearly.
+              </p>
+            </div>
+            <div class="form-group">
+              <textarea
+                id="q4-dissipation"
+                name="q4-dissipation"
+                rows="7"
+                placeholder="Explain why storms in central Kansas failed to develop into severe storms:"
+              ></textarea>
+            </div>
           </div>
         </div>
 
